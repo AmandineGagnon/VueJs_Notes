@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+
+
+    <!--REACTIVITY EVENT IN JS-->
+    <section id="events">
+      
+      <h2>Events in Action</h2>
+      <!--v-on is a property of VueJS to add reactivity. It is an event listener. Here when we click on the button, execute the function that is specified. 
+          VueJS can interpret simple expression in Javascript inside the "" -->
+      <button v-on:click="counter++">Add</button> 
+      <button v-on:click="counter--">Remove</button>
+      <br>
+      <br>
+      <button v-on:click="add()">Add with function</button> <!--we are calling a function -->
+      <button v-on:click="remove()">Remove with function</button> <!--we are calling a function -->
+      <br>
+      <br>
+      <!--will add or remove the number passed in parameters-->
+      <button v-on:click="addargs(5)">Add with argument</button> <!--we are calling a function passing an argument -->
+      <button v-on:click="removeargs(5)">Remove with argument</button> <!--we are calling a function passing an argument -->
+      <p>Result: {{ counter }}</p> 
+      <br>
+      <br>
+
+      <!--Input your name in a field text and output it dynamically-->
+      <!--setName will point at the function setName in our methods section-->
+      <input type=text v-on:input="setName">
+      <p>Your name: {{ name }}</p>
+      <br>
+      <br>
+      <!--Input your name, output it dynamically and pass another arguments-->
+      <!--The $event, let us use the event default object while also passing another args. -->
+      <input type=text v-on:input="setFullName($event, 'Gagnon-Hébert')">
+      <p>Your name: {{ name }}</p>
+      <br>
+      <br>
+
+      <!--EVENT MODIFIER PREVENT-->
+      <!--Here .prevent is a modifier modifiying the event behavior. This will prevent the browser to do its by default action which 
+          is to send the form through an HTTP request and reload the page-->
+      <h3>Event modifier - Prevent Default</h3>
+      <form v-on:submit.prevent="submitForm"> 
+        <input type=text>
+        <button>Sign Up</button>
+      </form>
+      <br>
+      <br>
+      <!--EVENT MODIFIER ON RIGHT CLICK. We only want to react on right click-->
+      <h3>Event modifier - right click</h3>
+      <button v-on:click.right="addargs(5)">Add witn event modifier</button> <!--we are calling a function passing an argument -->
+      <button v-on:click.right="removeargs(5)">Remove with event modifier</button> <!--we are calling a function passing an argument -->
+      <p>Result: {{ counter }}</p> 
+      <br>
+      <br>
+
+      <!--EVENT MODIFIER ON KEYUP. We only want the name to update when the Enter button is pressed-->
+      <h3>Event modifier - key up</h3>
+      <input type=text v-on:input="setFullName($event, 'Gagnon-Hébert')" v-on:keyup.Enter="confirmedName">
+      <p>Your name: {{ confirmeName }}</p>
+      <br>
+      <br>
+
+
+      <!--V-ONCE to lock an initial value-->
+      <h3>v-once</h3>
+      <button v-on:click="addargs(5)">Add with argument</button> <!--we are calling a function passing an argument -->
+      <button v-on:click="removeargs(5)">Remove with argument</button> <!--we are calling a function passing an argument -->
+      <p v-once> Result: {{ counter }}</p>  <!--Will be update only one time, so we can preversve the initial value-->
+      <p>Result: {{ counter }}</p> 
+      <br>
+      <br>
+      
+    </section>
+
+
+
+
+  </body>
+</html>

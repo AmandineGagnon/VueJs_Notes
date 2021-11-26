@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@3.0.5" defer></script> <!-- Installation de vue JS, doit être avant le fichier JS -->
+    <script src="app.js" defer></script> <!--Fichier JS -->
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+
+    <!--The section that is associated with Vue. It control all child element -->
+    <section id="user-goal">
+      <h2>My Course Goal</h2>
+      
+      <p>{{ goal }}</p> <!-- example of interpolation in Vue.js -->
+      <p><a v-bind:href="linkVue">Learn more</a></p> <!--when we want to dynamically modify an attribute of an HTML element -->
+      <p>{{ outputGoal() }}</p> <!--We can execute some JS function directly by calling a method that is in the methods section  -->
+      <p>{{ randomName() }}</p> <!--returning a value that is stored in data object -->
+      <p v-html="htmlrendering"></p> <!-- v-html property, Example de output qui interprète les balises HTML-->
+    
+    </section>
+
+
+
+  </body>
+</html>

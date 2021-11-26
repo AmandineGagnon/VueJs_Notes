@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+    <section id="events">
+      <h2>Events in Action </h2>
+      <h3>v-on + application of watch methods</h3>
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
+      <p>Result: {{ counter }}</p>
+      <br>
+      <br>
+      
+      <h3>v-bind</h3>
+      <!--Here with V-bind. I bind the input text with the data name in the Data section of Vueapp -->
+      <!--This will reset the input field to blank when reset button is pressed-->
+      <!--A Shortcut for v-bind:value is just :value='name'-->
+      <input type="text" v-on:input="setName" v-bind:value='name'>
+      <p>Your Name: {{ name }}</p>
+      
+      <!--@click is a shorthand for v-on:click-->
+      <button @click="resetName">Reset field</button>
+      <br>
+      <br>
+
+      <!--V-MODEL, TWO-WAY BINDING-->
+      <!--v-model is a short cut of v-bind:value and v-on:input. it will listen to the event coming(what you enter in the field) and store it in the value name in data section-->
+      <h3>v-model and two way binding</h3>
+      <input type="text" v-model='name'>
+      <p>Your Name: {{ name }}</p>
+
+      <!--Not the best way to do it cause Vue will reexecute this function with every change on the page-->
+      <!--Not Good for performance-->
+      <p>Your Full Name (not the best way): {{ outputFullname() }}</p>
+      <button v-on:click="resetName">Reset field</button>
+      <br>
+      <br>
+
+      <!--COMPUTED VALUE-->
+      <h3>Computed value</h3>
+      <input type="text" v-model='name'>
+      <p>Your Full Name: {{ fullname }}</p>
+      <button v-on:click="resetName">Reset field</button>
+      <br>
+      <br>
+
+      <!--WATCH-->
+      <h3>watch</h3>
+      <input type="text" v-model='Animal'>
+      <p>My animal's fullname is: {{ AnimalFullName }}</p>
+      <button v-on:click="resetAnimal">Reset field</button>
+      <br>
+      <br>
+
+      <!--COMPUTED VALUE REFERRING TO TWO DEPENDENCIES-->
+      <h3>Computed value with two dependencies</h3>
+      <input type="text" v-model='streetnumber'>
+      <input type="text" v-model='streetname'>
+      <p>My address is: {{ completeaddress }}</p>
+      <button v-on:click="resetAddress">Reset field</button>
+      <br>
+      <br>
+
+
+
+
+
+    </section>
+  </body>
+</html>
